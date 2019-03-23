@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .main{
+            transform: rotate(45deg);
+            display: none;
+            position: absolute;
+            top:-150px;
+        }
+        .disc1{
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            background-color: red;
+            margin:300px 0px 0px 300px;
+            border-radius:100%;
+            float:left;
+        }
+        .disc2{
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            background-color: red;
+            margin:250px 0px 0px 0px;
+            border-radius:100%;
+            float:left;
+            position: relative;
+            right: 50px;
+        }
+        .square{
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            background-color: red;
+            margin: 300px 0px 0px 0px;
+            float: left;
+            position: relative;
+            right: 152px;
+        }
+        .open{
+            font-weight: bold;
+            color: #000;
+            font-size: 30px;
+            padding: 10px 30px;
+        }
+        #phone{
+            display: none;
+            width:1100px;margin:10px;font-size:50px;font-weight:bold;color:rgba(0,0,0,0.3); background:-webkit-linear-gradient(-30deg,rgba(255,255,255,0) 100px,rgba(255,255,255,1) 180px,rgba(255,255,255,1) 240px,rgba(255,255,255,0) 300px) -300px 0 no-repeat; -webkit-background-clip:text;}
+    </style>
+</head>
+<body>
+<div class="openBtn">
+    <div class="open">请打开控制台，查看console选项</div>
+    <div class="open">请打开控制台，查看console选项</div>
+    <div class="open">请打开控制台，查看console选项</div>
+    <div class="open">重要的话说3遍!!!</div>
+</div>
+<div class="tips">【小提示：需要在电脑上打开。如不喜欢背景颜色请刷新】</div>
+<div class="main">
+    <div class="disc1"></div>
+    <div class="disc2"></div>
+    <div class="square"></div>
+</div>
+<script>
+    var a=['亲爱的程序员','在这个风和日丽的日子','我有句话憋在心里很久了','往后余生','早点下班','手动比心\\(^o^)/~']
+    var data=[
+        '你好，欢迎见证bug名场面',
+        '警告：你的设备将在3秒后爆炸',
+        '1',
+        '2',
+        '3',
+        '哈哈哈，开个玩笑',
+        '友情提示，接下来的操作不会对你的设备产生任何影响',
+        'Uncaught TypeError: $(...).none is not a function',
+        'Failed to load resource: the server responded with a status of 500 (Internal Server Error)',
+        'Failed to load resource: the server responded with a status of 404 (Not Found)',
+        'Uncaught ReferenceError: love is not defined',
+        '卧槽，这什么鬼？',
+        '别急，还有'
+    ]
+    console.info('你现在需要在下面👇输入：test()','【提示：输入完成后回车查看效果】')
+    function randomRgbColor() { //随机生成RGB颜色
+        var r = Math.floor(Math.random() * 256); //随机生成256以内r值
+        var g = Math.floor(Math.random() * 256); //随机生成256以内g值
+        var b = Math.floor(Math.random() * 256); //随机生成256以内b值
+        return `rgb(${r},${g},${b})`; //返回rgb(r,g,b)格式颜色
+    }
+    document.body.style.background=randomRgbColor();
+
+    function test(){
+        var promise1=new Promise(function(resolve,reject){
+            for(var i=0;i<data.length;i++){
+                setTimeout(function(i){
+                    return function(){
+
+                        if(i==0||i==1){
+                            console.warn(data[i])
+                        }
+                        else{
+                            console.error(data[i])
+                        }
+                    }
+                }(i),i*1000)
+            }
+            setTimeout(function () {
+                resolve();
+            },i*1000)
+        })
+        promise1.then(function(){
+            love();
+        })
+        function love(){
+            for(var j=0;j<a.length;j++){
+                setTimeout(function(j){
+                    return function(){
+                        console.log(a[j])
+                    }
+                }(j),j*1000)
+            }
+            console.clear();
+            document.querySelector('.openBtn').style.display='none';
+            document.querySelector('.main').style.display='block';
+            document.querySelector('#phone').style.display='inline-block'
+        }
+    }
+</script>
+<div id="phone">人生最幸福的事莫过于永不加班</div>
+
+<script language="javascript">
+    var ph=document.getElementById("phone");
+    var otime=null;
+    var num=-300;
+    function tomove(){
+
+        otime=setInterval(function (){
+            num+=10;
+            if(num==1100)
+            {
+                num=-300;
+                clearInterval(otime);
+            }
+            ph.style.backgroundPosition=num+"px 0px";
+
+        },20)
+    }
+    tomove();
+    setInterval(function(){
+        tomove();
+    },3000);
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
+</div>
+</body>
+</html>
